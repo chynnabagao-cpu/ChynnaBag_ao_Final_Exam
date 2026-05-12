@@ -3,35 +3,225 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student List</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Student Records - Management System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- GLOBAL STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f6;
+            color: #333;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background-color: #1a2a6c;
+            padding: 1rem 0;
+            color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .logo span { color: #48c6ef; }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .navbar ul li { margin-left: 25px; }
+
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 400;
+            transition: 0.3s;
+        }
+
+        .navbar ul li a:hover { color: #48c6ef; }
+
+        /* Main Container */
+        .container {
+            max-width: 1100px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .header-area {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: #1a2a6c;
+            font-weight: 600;
+        }
+
+        /* --- TABLE STYLES --- */
+        .table-wrapper {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            overflow-x: auto; /* For mobile responsiveness */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        thead {
+            background-color: #f8f9fa;
+        }
+
+        th {
+            padding: 15px;
+            color: #1a2a6c;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid #eee;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        tr:hover {
+            background-color: #f1f4ff;
+        }
+
+        /* Status & Action Buttons */
+        .btn-action {
+            padding: 6px 12px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 5px;
+            transition: 0.3s;
+        }
+
+        .btn-edit {
+            background-color: #e3f2fd;
+            color: #1976d2;
+            border: 1px solid #1976d2;
+        }
+
+        .btn-edit:hover {
+            background-color: #1976d2;
+            color: white;
+        }
+
+        .btn-delete {
+            background-color: #ffebee;
+            color: #d32f2f;
+            border: 1px solid #d32f2f;
+        }
+
+        .btn-delete:hover {
+            background-color: #d32f2f;
+            color: white;
+        }
+
+        .btn-add-new {
+            background-color: #27ae60;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Responsive Mobile Styles */
+        @media (max-width: 768px) {
+            .header-area {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/register">Register Student</a></li>
-            <li><a href="/list">View Students</a></li>
-        </ul>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">STUDENT<span>PORTAL</span></div>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/register">Register</a></li>
+                <li><a href="/list">View List</a></li>
+            </ul>
+        </div>
     </nav>
+
     <div class="container">
-        <h1>Student List</h1>
-        <table id="studentTable">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Student ID</th>
-                    <th>Full Name</th>
-                    <th>Course</th>
-                    <th>Year Level</th>
-                    <th>Email</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody id="studentBody">
-            </tbody>
-        </table>
+        <div class="header-area">
+            <h1>Student Directory</h1>
+            <a href="/register" class="btn-add-new">+ Add Student</a>
+        </div>
+
+        <div class="table-wrapper">
+            <table id="studentTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Student ID</th>
+                        <th>Full Name</th>
+                        <th>Course</th>
+                        <th>Year</th>
+                        <th>Email</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="studentBody">
+                    <tr>
+                        <td>1</td>
+                        <td>2024-0001</td>
+                        <td>Cardo Dalisay</td>
+                        <td>BSIT</td>
+                        <td>3rd Year</td>
+                        <td>cardo@example.com</td>
+                        <td>
+                            <a href="#" class="btn-action btn-edit">Edit</a>
+                            <a href="#" class="btn-action btn-delete">Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
