@@ -4,23 +4,186 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Information Management System</title>
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- PROFESSIONAL CSS STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background-color: #1a2a6c; /* Deep Navy */
+            padding: 1rem 0;
+            color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .navbar ul li {
+            margin-left: 25px;
+        }
+
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .navbar ul li a:hover {
+            color: #48c6ef;
+        }
+
+        /* Hero / Main Section */
+        .main-content {
+            height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 60px 40px;
+            border-radius: 16px;
+            text-align: center;
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        }
+
+        .card h1 {
+            font-size: 2.8rem;
+            color: #1a2a6c;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .card p {
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.15rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Interactive Buttons */
+        .actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 14px 35px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: #27ae60; /* Emerald Green */
+            color: white;
+            border: none;
+            box-shadow: 0 4px 14px rgba(39, 174, 96, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: #219150;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(39, 174, 96, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #1a2a6c;
+            border: 2px solid #1a2a6c;
+        }
+
+        .btn-secondary:hover {
+            background-color: #1a2a6c;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(26, 42, 108, 0.2);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 650px) {
+            .actions {
+                flex-direction: column;
+            }
+            .card h1 {
+                font-size: 2rem;
+            }
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .navbar ul li {
+                margin: 0 10px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/register">Register Student</a></li>
-            <li><a href="/list">View Students</a></li>
-        </ul>
-    </nav>
-    <div class="container">
-        <h1>Welcome to Student Information Management System</h1>
-        <p>This system allows you to manage student records including adding, viewing, updating, and deleting student information.</p>
-        <div class="actions">
-            <a href="/register" class="btn">Add New Student</a>
-            <a href="/list" class="btn">View All Students</a>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">STUDENT<span>PORTAL</span></div>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/register">Register Student</a></li>
+                <li><a href="/list">View All</a></li>
+            </ul>
         </div>
-    </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="card">
+            <h1>Student Management</h1>
+            <p>Efficiently manage, track, and update student records through our secure cloud-integrated management system.</p>
+            
+            <div class="actions">
+                <a href="/register" class="btn btn-primary">Add New Student</a>
+                <a href="/list" class="btn btn-secondary">View Records List</a>
+            </div>
+        </div>
+    </main>
+
 </body>
 </html>
